@@ -48,16 +48,7 @@ backend/
     cd backend
     ```
 
-2.  **Create and activate a virtual environment:**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
-
-3.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+2. Run `uv sync` to install the packages in `pyproject.toml`
 
 4.  **Environment Variables:**
     Create a `.env` file in the `backend` directory by copying `.env.example` (if one exists) or by creating it manually. This file will store sensitive configuration and should not be committed to version control if it contains real secrets.
@@ -142,6 +133,11 @@ pytest
 ```
 
 ## Further Information
+
+### Troubleshooting
+If you run into the error: 
+
+you need to look at [this web guide](https://sqlpey.com/python/solved-how-to-install-psycopg2-using-pip-on-python/) and follow the instructions for your specific OS.
 
 **Project-Specific Guides:**
 

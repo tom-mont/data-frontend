@@ -1,9 +1,10 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
-from sqlalchemy.sql import func
-from .database import Base
-from passlib.context import CryptContext
 import secrets
 
+from passlib.context import CryptContext
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy.sql import func
+
+from .database import Base
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

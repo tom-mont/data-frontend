@@ -1,9 +1,9 @@
+import json
 import logging
 import sys
-from pathlib import Path
-from logging.handlers import RotatingFileHandler
-import json
 from datetime import datetime
+from logging.handlers import RotatingFileHandler
+from pathlib import Path
 
 from app.config import CURRENT_LOGGING_CONFIG
 
@@ -19,7 +19,9 @@ class CustomFormatter(logging.Formatter):
     bold_red = "\x1b[31;1m"
     reset = "\x1b[0m"
 
-    format_str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)"
+    format_str = (
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)"
+    )
 
     FORMATS = {
         logging.DEBUG: grey + format_str + reset,

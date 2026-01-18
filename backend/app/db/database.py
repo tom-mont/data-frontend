@@ -1,9 +1,11 @@
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from urllib.parse import quote_plus
+
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.pool import AsyncAdaptedQueuePool
-from app.utils.logger import setup_logger
+
 from app.config import get_settings
-from urllib.parse import quote_plus
+from app.utils.logger import setup_logger
 
 settings = get_settings()
 logger = setup_logger(__name__)
@@ -58,7 +60,11 @@ engine = create_engine_with_retry(get_database_url())
 
 # Create async session maker
 AsyncSessionLocal = async_sessionmaker(
-    engine, class_=AsyncSession, expire_on_commit=False, autocommit=False, autoflush=False
+    engine,
+    class_=AsyncSession,
+    expire_on_commit=False,
+    autocommit=False,
+    autoflush=False,
 )
 
 

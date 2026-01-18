@@ -1,12 +1,13 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
-from app.utils.logger import setup_logger
-from app.routes.health import router as health_router
-from app.routes.auth import router as auth_router
-from app.db.database import init_db, engine
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.config import get_settings
+from app.db.database import engine, init_db
+from app.routes.auth import router as auth_router
+from app.routes.health import router as health_router
+from app.utils.logger import setup_logger
 
 settings = get_settings()
 logger = setup_logger(__name__)

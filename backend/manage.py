@@ -16,7 +16,9 @@ settings = get_settings()
 def run():
     """Run the FastAPI application."""
     typer.echo("Starting FastAPI app...")
-    subprocess.run(["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"])
+    subprocess.run(
+        ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    )
 
 
 @app.command()
@@ -51,7 +53,9 @@ async def _create_superuser_async(email: str, username: str, password: str):
     """Async helper to create a superuser."""
     async with AsyncSessionLocal() as session:
         async with session.begin():
-            stmt = select(User).where((User.email == email) | (User.username == username))
+            stmt = select(User).where(
+                (User.email == email) | (User.username == username)
+            )
             result = await session.execute(stmt)
             existing_user = result.scalar_one_or_none()
 
@@ -90,8 +94,12 @@ async def _create_superuser_async(email: str, username: str, password: str):
 
 @app.command()
 def createsuperuser(
-    email: str = typer.Option(..., prompt=True, help="The email address for the superuser."),
-    username: str = typer.Option(..., prompt=True, help="The username for the superuser."),
+    email: str = typer.Option(
+        ..., prompt=True, help="The email address for the superuser."
+    ),
+    username: str = typer.Option(
+        ..., prompt=True, help="The username for the superuser."
+    ),
     password: str = typer.Option(
         ...,
         prompt=True,
@@ -106,7 +114,9 @@ def createsuperuser(
         asyncio.run(_create_superuser_async(email, username, password))
     except Exception as e:
         typer.secho(
-            f"An error occurred during superuser creation: {e}", fg=typer.colors.RED, err=True
+            f"An error occurred during superuser creation: {e}",
+            fg=typer.colors.RED,
+            err=True,
         )
 
 

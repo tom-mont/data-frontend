@@ -1,11 +1,12 @@
 import pytest
 from httpx import AsyncClient
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.config import get_settings
 
 # UserCreate schema is not directly used, json payloads are dicts
 from app.db.models import User  # To verify DB state
-from app.config import get_settings
 
 settings = get_settings()
 API_PREFIX = settings.API_PREFIX

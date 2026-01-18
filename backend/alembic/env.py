@@ -1,7 +1,8 @@
 import asyncio
-from alembic import context
 from logging.config import fileConfig
-from app.db import Base, get_database_url, create_engine_with_retry
+
+from alembic import context
+from app.db import Base, create_engine_with_retry, get_database_url
 
 # Load Alembic configuration and set up logging
 config = context.config

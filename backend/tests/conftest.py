@@ -24,7 +24,10 @@ os.environ.setdefault("ENVIRONMENT", "testing")
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, PROJECT_ROOT)
 
-from app.config import Settings, get_settings  # noqa: E402  pylint: disable=wrong-import-position
+from app.config import (  # noqa: E402  pylint: disable=wrong-import-position
+    Settings,
+    get_settings,
+)
 from app.db import Base  # noqa: E402  pylint: disable=wrong-import-position
 from app.db.database import get_db  # noqa: E402  pylint: disable=wrong-import-position
 from app.main import app  # noqa: E402  pylint: disable=wrong-import-position

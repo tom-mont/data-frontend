@@ -1,9 +1,10 @@
 import os
-from pathlib import Path
 from functools import lru_cache
-from typing import Optional, List
-from pydantic_settings import BaseSettings
+from pathlib import Path
+from typing import List, Optional
+
 from dotenv import load_dotenv
+from pydantic_settings import BaseSettings
 
 load_dotenv()
 

@@ -1,8 +1,10 @@
-import pytest
 from datetime import datetime, timedelta
-from jose import jwt, JWTError
-from app.services.auth import create_access_token
+
+import pytest
+from jose import JWTError, jwt
+
 from app.config import get_settings
+from app.services.auth import create_access_token
 
 settings = get_settings()
 
